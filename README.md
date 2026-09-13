@@ -4,7 +4,7 @@
 
 ## Purpose
 
-This project exposes an API that allows external automation tools such as n8n, cron jobs, or custom scripts to collect and aggregate content from multiple sources and turn it into a single ebook-style document named `info`.
+This project exposes an API that allows external automation tools such as n8n (this is what I do), cron jobs, or custom scripts to collect and aggregate content from multiple sources and turn it into a single ebook-style document named `info`.
 
 The idea is simple: create an automated “daily brief” or similar reading digest, then send it to an e-reader without manual copy/paste or formatting work.
 
