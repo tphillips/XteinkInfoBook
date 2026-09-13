@@ -33,6 +33,8 @@ When a request is received, it:
 4. Deletes the previous EPUB from the target reader.
 5. Uploads the new EPUB to the configured device endpoint via `curl`.
 
+Obviously the device should be coonnected to your network at the point info is sent. I will have the api periodically retry at some point...
+
 The resulting file is effectively a generated book called `info` that can be viewed on the Xteink reader.
 
 Run with docker compose. Edit the compose file to set your xteink host IP (which should be reserved on your router).
