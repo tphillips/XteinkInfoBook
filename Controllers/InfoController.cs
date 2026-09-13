@@ -23,6 +23,12 @@ public class InfoController : ControllerBase
 		return currentInfo;
 	}
 
+	[HttpDelete(Name = "Info")]
+	public void DeleteInfo()
+	{
+		Infos.Clear();
+	}
+
 	private static async Task RunProcessAndShowOutput(string fileName, string arguments)
 	{
 		var startInfo = new ProcessStartInfo
