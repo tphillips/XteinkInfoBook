@@ -34,3 +34,5 @@ When a request is received, it:
 5. Uploads the new EPUB to the configured device endpoint via `curl`.
 
 The resulting file is effectively a generated book called `info` that can be viewed on the Xteink reader.
+
+Run with docker compose. Edit the compose file to set your xteink host IP (which should be reserved on your router).
