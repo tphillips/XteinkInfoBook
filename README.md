@@ -43,15 +43,27 @@ For those of you who are only here for the how:
 
 `
 var html = "<html><head><title>Info</title></head><body>";
+
 foreach (var info in infos)
+
 {
+
     html += $"<h1>{info.Section}</h1><p>{info.Content}</p>";
+
 }
+
 html += "</body></html>";
+
 try { System.IO.File.Delete("/content/info.html"); } catch {}
+
 await System.IO.File.WriteAllTextAsync("/content/info.html", html);
+
 try { System.IO.File.Delete("/content/info.epub"); } catch {}
+
 await RunProcessAndShowOutput("pandoc", "/content/info.html -o /content/info.epub --toc --no-check-certificate");
+
 await RunProcessAndShowOutput("curl", $"-F \"path=info.epub\" http://{host}/delete");
+
 await RunProcessAndShowOutput("curl", $"-F \"file=@/content/info.epub\" http://{host}/upload");
+
 `
