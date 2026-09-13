@@ -1,6 +1,6 @@
 # XteinkInfo
 
-`XteinkInfo` is an API for building a compact daily information brief and pushing it to an Xteink e-reader.  The API does not do any data collection, instead facilitates pushing the information to your reader.
+`XteinkInfo` is a /proof of concept/ API for building a compact daily information brief and pushing it to an Xteink e-reader.  The API does not do any data collection, instead facilitates pushing the information to your reader.
 
 ## Purpose
 
@@ -38,3 +38,20 @@ Obviously the device should be coonected to your network at the point info is se
 The resulting file is effectively a generated book called `info` that can be viewed on the Xteink reader.
 
 Run with docker compose. Edit the compose file to set your xteink host IP (which should be reserved on your router).
+
+For those of you who are only here for the how:
+
+`
+var html = "<html><head><title>Info</title></head><body>";
+foreach (var info in infos)
+{
+    html += $"<h1>{info.Section}</h1><p>{info.Content}</p>";
+}
+html += "</body></html>";
+try { System.IO.File.Delete("/content/info.html"); } catch {}
+await System.IO.File.WriteAllTextAsync("/content/info.html", html);
+try { System.IO.File.Delete("/content/info.epub"); } catch {}
+await RunProcessAndShowOutput("pandoc", "/content/info.html -o /content/info.epub --toc --no-check-certificate");
+await RunProcessAndShowOutput("curl", $"-F \"path=info.epub\" http://{host}/delete");
+await RunProcessAndShowOutput("curl", $"-F \"file=@/content/info.epub\" http://{host}/upload");
+`
