@@ -62,6 +62,7 @@ public class InfoController : ControllerBase
 
     private async Task SendInfoToDevice(List<Info> infos)
     {
+        var host = Environment.GetEnvironmentVariable("XTEINK_HOST") ?? "192.168.4.22";
         var html = "<html><head><title>Info</title></head><body>";
         foreach (var info in infos)
         {
@@ -71,10 +72,9 @@ public class InfoController : ControllerBase
         try { System.IO.File.Delete("/content/info.html"); } catch {}
         await System.IO.File.WriteAllTextAsync("/content/info.html", html);
         try { System.IO.File.Delete("/content/info.epub"); } catch {}
-
         await RunProcessAndShowOutput("pandoc", "/content/info.html -o /content/info.epub --toc --no-check-certificate");
-        await RunProcessAndShowOutput("curl", "-F \"path=info.epub\" http://192.168.4.38/delete");
-        await RunProcessAndShowOutput("curl", "-F \"file=@/content/info.epub\" http://192.168.4.38/upload");
+        await RunProcessAndShowOutput("curl", $"-F \"path=info.epub\" http://{host}/delete");
+        await RunProcessAndShowOutput("curl", $"-F \"file=@/content/info.epub\" http://{host}/upload");
     }
 }
 
