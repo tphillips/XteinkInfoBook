@@ -1,6 +1,6 @@
 # XteinkInfo
 
-`XteinkInfo` is a /proof of concept/ API for building a compact daily information brief and pushing it to an Xteink e-reader.  The API does not do any data collection, instead facilitates pushing the information to your reader.
+`XteinkInfo` is a _proof of concept_ API for building a compact daily information brief and pushing it to an Xteink e-reader.  The API does not do any data collection, instead facilitates pushing the information to your reader.
 
 ## Purpose
 
