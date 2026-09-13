@@ -1,0 +1,6 @@
+@xteinkInfo_HostAddress = http://localhost:5168
+
+GET {{xteinkInfo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

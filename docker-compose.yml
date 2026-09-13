@@ -1,0 +1,15 @@
+services:
+  api:
+    dns:
+      - 8.8.8.8
+    build:
+      dockerfile: Dockerfile
+    container_name: xteinkInfo
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+    volumes:
+      - ./content:/content
+    ports:
+      - "5246:8080"
+    restart: unless-stopped
