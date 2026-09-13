@@ -3,7 +3,7 @@ WORKDIR /src
 
 COPY . ./
 WORKDIR /src
-RUN dotnet publish xteinkInfo.csproj -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish XeinkInfo.csproj -c Release -o /app/publish /p:UseAppHost=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 RUN apt update; apt install -y zip unzip pandoc curl
